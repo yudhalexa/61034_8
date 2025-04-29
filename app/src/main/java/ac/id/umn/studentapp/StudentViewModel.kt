@@ -8,7 +8,7 @@ import com.google.firebase.Firebase
 import android.util.Log
 import com.google.firebase.firestore.firestore
 
-class StudentViewModel : ViewModel {
+class StudentViewModel : ViewModel() {
     private val db = Firebase.firestore
     var students by mutableStateOf(listOf<Student>())
         private set
@@ -21,7 +21,8 @@ class StudentViewModel : ViewModel {
         val studentMap = hashMapOf(
             "id" to student.id,
             "name" to student.name,
-            "program" to student.program
+            "program" to student.program,
+            "phones" to student.phones
         )
 
         db.collection("students")
